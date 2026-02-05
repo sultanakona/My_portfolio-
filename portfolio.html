@@ -1,0 +1,381 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sultana Parvin Kona - Backend Developer Portfolio</title>
+    
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- EmailJS SDK -->
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"></script>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="container">
+            <div class="nav-wrapper">
+                <div class="logo">Sultana Parvin Kona</div>
+                <div class="menu-toggle" id="mobile-menu">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </div>
+                <ul class="nav-menu" id="nav-menu">
+                    <li><a href="#home" class="nav-link active">Home</a></li>
+                    <li><a href="#about" class="nav-link">About</a></li>
+                    <li><a href="#services" class="nav-link">Services</a></li>
+                    <li><a href="#projects" class="nav-link">Projects</a></li>
+                    <li><a href="#contact" class="nav-link">Contact</a></li>
+                </ul>
+                <button class="contact-btn">Contact Me</button>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section id="home" class="hero">
+        <div class="container">
+            <div class="hero-content">
+                <div class="profile-image">
+                    <img src="images/profile.jpeg" alt="Sultana Parvin Kona">
+                </div>
+                <h1 class="hero-title">Mst. Sultana Parvin Kona</h1>
+                <p class="hero-subtitle">Backend Developer (Python, Django, AI/ML)</p>
+                <p class="hero-description">
+                    Backend Developer with expertise in Python and Django, focused on building scalable, secure, and high-performance backend systems. Experienced in developing RESTful APIs, managing databases, and integrating AI/ML-driven features into real-world applications. Adept at problem-solving, writing clean and maintainable code, and collaborating in fast-paced, production-oriented environments.
+                </p>
+                <button class="cta-btn">Contact Me</button>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="about">
+        <div class="container">
+            <h2 class="section-title">About Me</h2>
+            <div class="about-content">
+                <p>
+                    My name is <strong>Sultana Parvin Kona</strong>, and I am a
+                    <strong>Backend Developer</strong> currently working at
+                    <strong>Betopia</strong>, with a strong and growing focus on
+                    <strong>Machine Learning</strong> and <strong>AI-driven backend systems</strong>.
+                    I specialize in building scalable, secure, and high-performance backend
+                    architectures using Python and Django, while actively integrating ML models
+                    into real-world applications.
+                </p>
+                <p>
+                    I am deeply passionate about leveraging Machine Learning to enhance backend
+                    intelligence, automate decision-making, and build data-driven systems that
+                    deliver real business value. My experience includes backend architecture
+                    design, RESTful API development, database management, and deploying ML-powered
+                    features that make applications smarter, faster, and more adaptive to user
+                    needs.
+                </p>
+                <p>
+                    With a strong problem-solving mindset and a continuous learning approach,
+                    I strive to bridge the gap between traditional backend development and modern
+                    AI/ML systems, ensuring that intelligent models are practical, scalable, and
+                    production-ready.
+                </p>
+                <div class="about-actions">
+                    <a href="assets/Sultana_Parvin_kona -1.pdf" class="download-btn" download>
+                        Download Resume
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Services Section -->
+    <section id="services" class="services">
+        <div class="container">
+            <h2 class="section-title">What I do</h2>
+            <p class="section-subtitle">My Services</p>
+            <div class="services-grid">
+                <div class="service-card">
+                    <div class="service-icon">
+                        <i class="fas fa-server"></i>
+                    </div>
+                    <h3>Backend Development</h3>
+                    <p>
+                        Building robust, scalable backend systems with Python and Django. Expert in designing RESTful APIs, implementing authentication systems, and managing complex database operations for high-performance applications.
+                    </p>
+                </div>
+
+                <div class="service-card">
+                    <div class="service-icon">
+                        <i class="fas fa-code"></i>
+                    </div>
+                    <h3>API Development & Integration</h3>
+                    <p>
+                        Developing comprehensive RESTful APIs with Django REST Framework. Expertise in third-party API integrations, webhooks, and creating well-documented, secure endpoints for seamless data exchange.
+                    </p>
+                </div>
+
+                <div class="service-card">
+                    <div class="service-icon">
+                        <i class="fas fa-database"></i>
+                    </div>
+                    <h3>Database Design & Optimization</h3>
+                    <p>
+                        Designing efficient database schemas, optimizing queries, and managing PostgreSQL/MySQL databases. Skilled in database migrations, indexing strategies, and ensuring data integrity at scale.
+                    </p>
+                </div>
+
+                <div class="service-card">
+                    <div class="service-icon">
+                        <i class="fas fa-chart-line"></i>
+                    </div>
+                    <h3>Data Analysis & Visualization</h3>
+                    <p>
+                        I transform raw data into actionable insights through advanced analytics and create 
+                        compelling visualizations that tell your data's story clearly and effectively.
+                    </p>
+                </div>
+
+                <div class="service-card">
+                    <div class="service-icon">
+                        <i class="fas fa-brain"></i>
+                    </div>
+                    <h3>Predictive Analytics and Forecasting</h3>
+                    <p>
+                        Leverage machine learning algorithms to predict future trends, customer behavior, and 
+                        market movements, enabling data-driven decision-making for your business.
+                    </p>
+                </div>
+
+                <div class="service-card">
+                    <div class="service-icon">
+                        <i class="fas fa-language"></i>
+                    </div>
+                    <h3>Natural Language Processing</h3>
+                    <p>
+                        I build NLP solutions to extract insights from text data, including sentiment analysis, 
+                        text classification, and language translation applications.
+                    </p>
+                </div>
+
+                <div class="service-card">
+                    <div class="service-icon">
+                        <i class="fas fa-brain"></i>
+                    </div>
+                    <h3>AI/ML Integration</h3>
+                    <p>
+                        Integrating machine learning models into production backends. Experience with model deployment, real-time predictions, and building intelligent features that enhance application functionality.
+                    </p>
+                </div>
+
+                <div class="service-card featured">
+                    <div class="service-icon">
+                        <i class="fas fa-robot"></i>
+                    </div>
+                    <h3>ML-Powered Systems</h3>
+                    <p>
+                        Developing data-driven backend solutions with integrated ML capabilities. Creating recommendation systems, predictive analytics features, and automated decision-making workflows.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Projects Section -->
+    <section id="projects" class="projects">
+        <div class="container">
+            <h2 class="section-title">Projects</h2>
+            <p class="section-subtitle">Some of my Work</p>
+            
+            <div class="project-filters">
+                <button class="filter-btn active" data-filter="all">All</button>
+                <button class="filter-btn" data-filter="backend">Backend</button>
+                <button class="filter-btn" data-filter="api">API</button>
+                <button class="filter-btn" data-filter="ml">Machine Learning</button>
+                <button class="filter-btn" data-filter="fullstack">Full Stack</button>
+            </div>
+
+            <div class="projects-grid">
+                <!-- Add your actual projects here -->
+                <!-- Example project structure: -->
+                <div class="project-card" data-category="backend">
+                    <div class="project-image">
+                        <img src="images/AI Nutrition Recommendation System.webp" alt="Project">
+                    </div>
+                    <div class="project-info">
+                        <h3>AI Nutrition Recommendation System</h3>
+                        <div class="project-tags">
+                            <span>Python</span>
+                            <span>LLM</span>
+                            <span>LP</span>
+                            <span>Realistic Meals</span>
+                        </div>
+                        <a href="#" class="project-link">
+                            <i class="fas fa-arrow-right"></i>
+                        </a>
+                    </div>
+                </div>
+
+                <div class="project-card" data-category="ml">
+                    <div class="project-image">
+                        <img src="images/Toxic Comment Classification using NLP.jpg" alt="Project">
+                    </div>
+                    <div class="project-info">
+                        <h3>Toxic Comment Classification </h3>
+                        <div class="project-tags">
+                            <span>Machine Learning</span>
+                            <span>Python</span>
+                            <span>NLP</span>
+                        </div>
+                        <a href="https://github.com/sultanakona/toix_comment_classification_using_NLP" class="project-link">
+                            <i class="fas fa-arrow-right"></i>
+                        </a>
+                    </div>
+                </div>
+
+                <div class="project-card" data-category="api">
+                    <div class="project-image">
+                        <img src="images/driver behaviour analysis.jpeg" alt="Project">
+                    </div>
+                    <div class="project-info">
+                        <h3>Driver Behaviour Analysis</h3>
+                        <div class="project-tags">
+                            <span>REST API</span>
+                            <span>Sumo</span>
+                            <span>Authentication</span>
+                        </div>
+                        <a href="https://github.com/sultanakona/Driver-Behaviour-Analysis-using-python" class="project-link">
+                            <i class="fas fa-arrow-right"></i>
+                        </a>
+                    </div>
+                </div>
+
+                <div class="project-card" data-category="backend">
+                    <div class="project-image">
+                        <img src="images/hotel-management-system.jpg" alt="Project">
+                    </div>
+                    <div class="project-info">
+                        <h3>Hotel Management System</h3>
+                        <div class="project-tags">
+                            <span>PostgreSQL</span>
+                            <span>Optimization</span>
+                        </div>
+                        <a href="https://github.com/sultanakona/hotel-management-system_using-_c" class="project-link">
+                            <i class="fas fa-arrow-right"></i>
+                        </a>
+                    </div>
+                </div>
+
+                <div class="project-card" data-category="fullstack">
+                    <div class="project-image">
+                        <img src="images/Tour Management System.jpg" alt="Project">
+                    </div>
+                    <div class="project-info">
+                        <h3>Tour Management System</h3>
+                        <div class="project-tags">
+                            <span>Django</span>
+                            <span>React</span>
+                            <span>PostgreSQL</span>
+                        </div>
+                        <a href="https://github.com/sultanakona/Tour-Management-System" class="project-link">
+                            <i class="fas fa-arrow-right"></i>
+                        </a>
+                    </div>
+                </div>
+
+                <div class="project-card" data-category="ml">
+                    <div class="project-image">
+                        <img src="https://via.placeholder.com/400x300/10b981/FFFFFF?text=AI+Feature" alt="Project">
+                    </div>
+                    <div class="project-info">
+                        <h3>AI-Powered Backend</h3>
+                        <div class="project-tags">
+                            <span>AI/ML</span>
+                            <span>Python</span>
+                            <span>Django</span>
+                        </div>
+                        <a href="#" class="project-link">
+                            <i class="fas fa-arrow-right"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+            <button class="view-all-btn">View All</button>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="contact">
+        <div class="container">
+            <h2 class="section-title">Get In Touch</h2>
+            <form class="contact-form" id="contactForm">
+                <div class="form-group">
+                    <label for="name">Name *</label>
+                    <input type="text" id="name" name="name" placeholder="Your Name" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="email">Email *</label>
+                    <input type="email" id="email" name="email" placeholder="your@email.com" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="service">Services</label>
+                    <select id="service" name="service" required>
+                        <option value="">Select a service</option>
+                        <option value="backend-development">Backend Development</option>
+                        <option value="api-development">API Development</option>
+                        <option value="ml-integration">ML/AI Integration</option>
+                        <option value="database-design">Database Design</option>
+                        <option value="consulting">Technical Consulting</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label for="message">Message *</label>
+                    <textarea id="message" name="message" rows="5" placeholder="Tell me about your project..." required></textarea>
+                </div>
+
+                <button type="submit" class="submit-btn" id="submitBtn">
+                    <span class="btn-text">Get In Touch</span>
+                    <span class="btn-loading" style="display: none;">
+                        <i class="fas fa-spinner fa-spin"></i> Sending...
+                    </span>
+                </button>
+
+                <div id="form-message" class="form-message"></div>
+            </form>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-text">
+                    <h3>Let's Work Together -</h3>
+                    <p>© Sultana Parvin Kona. All rights reserved.</p>
+                </div>
+                <div class="footer-contact">
+                    <a href="mailto:sultanakona259@gmail.com" class="email-link">
+                        <i class="fas fa-envelope"></i>
+                        sultanakona259@gmail.com
+                    </a>
+                </div>
+                <div class="social-links">
+                    <a href="https://www.linkedin.com/in/sultana-parvin-kona-53596b261/" target="_blank" title="LinkedIn"><i class="fab fa-linkedin"></i></a>
+                    <a href="https://github.com/sultanakona" target="_blank" title="GitHub"><i class="fab fa-github"></i></a>
+                    
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- <script src="script.js"></script> -->
+       <!-- ================= SCRIPTS ================= -->
+  <!-- EmailJS Config (ignored by git) -->
+  <script src="./config.js"></script>
+
+  <!-- Main JS -->
+  <script src="./script.js"></script>
+</body>
+</html>

@@ -1,0 +1,2145 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+    <title>Food Recommendation Models Using Deep Learning</title>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="HandheldFriendly" content="True" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <link rel="stylesheet" type="text/css" href="/blog/assets/built/screen.css?v=28e3ee995b" />
+
+    <meta name="description" content="Food recommendations from ingredients Image using deep learning . Implementing a model for building  a system for recommending food recipes.">
+    <link rel="icon" href="https://www.labellerr.com/blog/content/images/size/w256h256/2022/10/Copy-of-Labellerr-Icon.png" type="image/png">
+    <link rel="canonical" href="https://www.labellerr.com/blog/food-recommendations-from-ingredients-image-using-deep-learning/">
+    <meta name="referrer" content="no-referrer-when-downgrade">
+    <link rel="amphtml" href="https://www.labellerr.com/blog/food-recommendations-from-ingredients-image-using-deep-learning/amp/">
+    
+    <meta property="og:site_name" content="Labellerr AI">
+    <meta property="og:type" content="article">
+    <meta property="og:title" content="Food Recommendation Models Using Deep Learning">
+    <meta property="og:description" content="Food recommendations from ingredients Image using deep learning . Implementing a model for building  a system for recommending food recipes.">
+    <meta property="og:url" content="https://www.labellerr.com/blog/food-recommendations-from-ingredients-image-using-deep-learning/">
+    <meta property="og:image" content="https://www.labellerr.com/blog/content/images/2024/03/image--6-.webp">
+    <meta property="article:published_time" content="2024-03-06T10:42:06.000Z">
+    <meta property="article:modified_time" content="2025-07-18T14:52:18.000Z">
+    <meta property="article:tag" content="AI">
+    <meta property="article:tag" content="deep learning">
+    <meta property="article:tag" content="guide">
+    <meta property="article:tag" content="Transfer learning">
+    <meta property="article:tag" content="CNN">
+    
+    <meta property="article:publisher" content="https://www.facebook.com/tensormaticslabellerr/">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Food Recommendation Models Using Deep Learning">
+    <meta name="twitter:description" content="Food recommendations from ingredients Image using deep learning . Implementing a model for building  a system for recommending food recipes.">
+    <meta name="twitter:url" content="https://www.labellerr.com/blog/food-recommendations-from-ingredients-image-using-deep-learning/">
+    <meta name="twitter:image" content="https://www.labellerr.com/blog/content/images/2024/03/image--6-.webp">
+    <meta name="twitter:label1" content="Written by">
+    <meta name="twitter:data1" content="Sumit Singh">
+    <meta name="twitter:label2" content="Filed under">
+    <meta name="twitter:data2" content="AI, deep learning, guide, Transfer learning, CNN">
+    <meta name="twitter:site" content="@Labellerr1">
+    <meta name="twitter:creator" content="@withlove_sumit">
+    <meta property="og:image:width" content="820">
+    <meta property="og:image:height" content="431">
+    
+    <script type="application/ld+json">
+{
+    "@context": "https://schema.org",
+    "@type": "Article",
+    "publisher": {
+        "@type": "Organization",
+        "name": "Labellerr AI",
+        "url": "https://www.labellerr.com/blog/",
+        "logo": {
+            "@type": "ImageObject",
+            "url": "https://www.labellerr.com/blog/content/images/2022/10/LabellerrLogo_White-1.webp"
+        }
+    },
+    "author": {
+        "@type": "Person",
+        "name": "Sumit Singh",
+        "image": {
+            "@type": "ImageObject",
+            "url": "https://www.labellerr.com/blog/content/images/2023/12/Sumit.jpeg",
+            "width": 1200,
+            "height": 1268
+        },
+        "url": "https://www.labellerr.com/blog/author/sumit/",
+        "sameAs": [
+            "https://www.linkedin.com/in/sumit-singh-68b07a25/",
+            "https://twitter.com/withlove_sumit"
+        ]
+    },
+    "headline": "Food Recommendation Models Using Deep Learning",
+    "url": "https://www.labellerr.com/blog/food-recommendations-from-ingredients-image-using-deep-learning/",
+    "datePublished": "2024-03-06T10:42:06.000Z",
+    "dateModified": "2025-07-18T14:52:18.000Z",
+    "image": {
+        "@type": "ImageObject",
+        "url": "https://www.labellerr.com/blog/content/images/2024/03/image--6-.webp",
+        "width": 820,
+        "height": 431
+    },
+    "keywords": "AI, deep learning, guide, Transfer learning, CNN",
+    "description": "\nIntroduction\n\nIn the age of information overload, finding the perfect recipe can sometimes feel like searching for a needle in a haystack. With countless cooking websites, blogs, and cookbooks available, it can be overwhelming to go through all the options to find a recipe that suits your taste preferences and dietary restrictions.\n\nHowever, advancements in artificial intelligence, particularly deep learning, are revolutionizing the way we discover and interact with food recipes.\n\n\nUnderstandin",
+    "mainEntityOfPage": "https://www.labellerr.com/blog/food-recommendations-from-ingredients-image-using-deep-learning/"
+}
+    </script>
+
+    <meta name="generator" content="Ghost 5.98">
+    <link rel="alternate" type="application/rss+xml" title="Labellerr AI" href="https://www.labellerr.com/blog/rss/">
+    <script defer src="https://cdn.jsdelivr.net/ghost/portal@~2.45/umd/portal.min.js" data-i18n="false" data-ghost="https://www.labellerr.com/blog/" data-key="626ffb01df4c3821b704be1525" data-api="https://www.labellerr.com/blog/ghost/api/content/" crossorigin="anonymous"></script><style id="gh-members-styles">.gh-post-upgrade-cta-content,
+.gh-post-upgrade-cta {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    text-align: center;
+    width: 100%;
+    color: #ffffff;
+    font-size: 16px;
+}
+
+.gh-post-upgrade-cta-content {
+    border-radius: 8px;
+    padding: 40px 4vw;
+}
+
+.gh-post-upgrade-cta h2 {
+    color: #ffffff;
+    font-size: 28px;
+    letter-spacing: -0.2px;
+    margin: 0;
+    padding: 0;
+}
+
+.gh-post-upgrade-cta p {
+    margin: 20px 0 0;
+    padding: 0;
+}
+
+.gh-post-upgrade-cta small {
+    font-size: 16px;
+    letter-spacing: -0.2px;
+}
+
+.gh-post-upgrade-cta a {
+    color: #ffffff;
+    cursor: pointer;
+    font-weight: 500;
+    box-shadow: none;
+    text-decoration: underline;
+}
+
+.gh-post-upgrade-cta a:hover {
+    color: #ffffff;
+    opacity: 0.8;
+    box-shadow: none;
+    text-decoration: underline;
+}
+
+.gh-post-upgrade-cta a.gh-btn {
+    display: block;
+    background: #ffffff;
+    text-decoration: none;
+    margin: 28px 0 0;
+    padding: 8px 18px;
+    border-radius: 4px;
+    font-size: 16px;
+    font-weight: 600;
+}
+
+.gh-post-upgrade-cta a.gh-btn:hover {
+    opacity: 0.92;
+}</style>
+    <script defer src="https://cdn.jsdelivr.net/ghost/sodo-search@~1.4/umd/sodo-search.min.js" data-key="626ffb01df4c3821b704be1525" data-styles="https://cdn.jsdelivr.net/ghost/sodo-search@~1.4/umd/main.css" data-sodo-search="https://www.labellerr.com/blog/" data-locale="en" crossorigin="anonymous"></script>
+    
+    <link href="https://www.labellerr.com/blog/webmentions/receive/" rel="webmention">
+    <script defer src="/blog/public/cards.min.js?v=28e3ee995b"></script>
+    <link rel="stylesheet" type="text/css" href="/blog/public/cards.min.css?v=28e3ee995b">
+    <script defer src="/blog/public/comment-counts.min.js?v=28e3ee995b" data-ghost-comments-counts-api="https://www.labellerr.com/blog/members/api/comments/counts/"></script>
+    <script defer src="/blog/public/member-attribution.min.js?v=28e3ee995b"></script><style>:root {--ghost-accent-color: #0040ff;}</style>
+    
+
+<!-- Google Tag Manager -->
+<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+})(window,document,'script','dataLayer','GTM-N73MXT3');</script>
+<!-- End Google Tag Manager →
+
+<!-- Google Tag Manager (noscript) -->
+<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-N73MXT3"
+height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+<!-- End Google Tag Manager (noscript) -->
+    <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [{
+    "@type": "Question",
+    "name": "How does the system identify ingredients from images?",
+    "acceptedAnswer": {
+      "@type": "Answer",
+      "text": "The system utilizes deep learning algorithms, particularly Convolutional Neural Networks (CNNs), trained on large datasets of ingredient images. These networks learn to recognize patterns and features in images, enabling them to accurately identify ingredients based on visual cues such as shape, color, and texture."
+    }
+  },{
+    "@type": "Question",
+    "name": "What types of ingredients can the system recognize?",
+    "acceptedAnswer": {
+      "@type": "Answer",
+      "text": "The system is capable of recognizing a wide range of ingredients, including fruits, vegetables, herbs, spices, meats, grains, and dairy products. It can identify both individual ingredients and complex combinations present in dishes."
+    }
+  
+  
+  }]
+}
+</script>
+<style>
+    /* ghost share icons*/
+
+        .share-block {
+        margin-top: 8rem;
+        text-align: center;
+    }
+    .share-block span {
+        display: inline-block;
+        font-weight: bold;
+        margin-right: 1rem;
+        font-size: 2rem;
+    }
+    .share-block a {
+        display: inline-block;
+        transition: all 0.3s;
+        margin: 0 0.25rem;
+    }
+    .share-block a:hover {
+        transform: scale(1.1);
+    }
+
+
+/* ghost share icons*/
+
+
+    
+    
+    .text-block-21 {
+        color: #fff;
+        text-align: center;
+        font-size: 14px;
+    }
+    .link-3 {
+        color: #fff;
+        text-decoration: underline;
+    }
+    
+    .navbar-btn.demo-btn {
+        color: #fff;
+        background-color: #ffa200;
+        border-style: none;
+        border-color: #fff;
+        padding-left: 40px !important;
+        padding-right: 40px !important;
+    }
+    .w--current {
+        color: #8524ff;
+    }
+    .dropbtn {
+     background-color: transparent;
+        color: #000;
+        border: none;
+            font-weight: 500;
+    }
+    
+    /* .dropdown {
+      position: relative;
+      display: inline-block;
+      background-image: url(https://uploads-ssl.webflow.com/62f35fc537dc73303f60c5dc/6470afa4c22911c855ab9523_Screenshot_30.jpg);
+          background-repeat: no-repeat;
+          background-size: 15px;
+    background-position: 84px;
+    width: 110px;
+    } */
+    .drop2{
+      background-position: 95px;
+        width: 110px;
+    }
+    .drop3{
+      background-position: 80px;
+        width: 110px;
+    }
+    .drop2-con{
+        width: 200px;
+    }
+    
+    
+    .dropdown-content {
+      display: none;
+      position: absolute;
+      background-color: #fff;
+      min-width: 120px;
+      box-shadow: -14px 14px 12px -6px rgba(48,40,57,.05);
+    
+      z-index: 9999;
+    }
+    
+    .dropdown-content a {
+      color: black;
+      padding: 12px 16px;
+      text-decoration: none;
+      display: block;
+    }
+    
+    .dropdown-content a:hover {background-color: #fff;}
+    
+    .dropdown:hover .dropdown-content {display: block;}
+    
+    .dropdown:hover .dropbtn {background-color: transparent;}
+    
+    
+    
+    .footerconterner{
+        width: 100%;
+        padding: 20px 60px;
+         background-color: #1a3066;
+         color: #fff;
+        padding-top: 100px;
+        padding-bottom: 100px;
+        font-family: Inter,sans-serif;
+    }
+    
+    
+    
+    .div-block-82 {
+        width: 300px;
+        height: auto;
+    }
+    .div-block-48 {
+        width: 100%;
+        flex-direction: column;
+        justify-content: space-between;
+        display: flex;
+    }
+    .div-block-312 {
+        grid-column-gap: 16px;
+        grid-row-gap: 16px;
+        grid-template-rows: auto;
+        grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr;
+        grid-auto-columns: 1fr;
+        display: grid;
+    }
+    .div-block-36 {
+        margin-right: 40px;
+    }
+    .footer-heading {
+        margin-bottom: 30px;
+        padding-top: 20px;
+        font-size: 20px;
+        font-weight: 700;
+        line-height: 24px;
+        font-family: Inter,sans-serif;
+    }
+    .footer-link {
+        color: #ffffff !important;
+        margin-bottom: 10px;
+        text-decoration: none;
+        display: block;
+        font-family: Inter,sans-serif;
+    }
+    .div-block-34 {
+        justify-content: space-between;
+        margin-top: 10px;
+        display: flex;
+    }
+    .lb-socialicons.linkedinbtn {
+        width: 20px;
+        background-image: url(https://uploads-ssl.webflow.com/62f35fc…/63206c9…_Vector%20\(2\).svg);
+        margin-left: 0;
+        margin-right: 0;
+        padding: 0;
+    }
+    .lb-socialicons.youtubebtn {
+        width: 20px;
+        background-image: url(https://uploads-ssl.webflow.com/62f35fc…/63f32bc…_icons8-youtube.svg);
+        background-size: auto;
+        margin-left: 0;
+        padding-left: 0;
+        padding-right: 0;
+    }
+    .lb-socialicons {
+        background-color: transparent;
+        background-image: url(https://uploads-ssl.webflow.com/62f35fc…/63206c9…_Facebook%20-%20Negative%20\(1\).svg);
+        background-position: 50%;
+        background-repeat: no-repeat;
+        background-size: contain;
+        margin-left: 10px;
+        margin-right: 10px;
+    }
+    .lb-socialicons.facebookbtn {
+        width: 20px;
+        margin-left: 0;
+        padding-left: 0;
+        padding-right: 0;
+    }
+    .lb-socialicons.twitterbtn {
+        width: 20px;
+        background-image: url(https://uploads-ssl.webflow.com/62f35fc…/63206c9…_Twitter%20-%20Negative%20\(1\).svg);
+        margin-left: 0;
+        margin-right: 0;
+        padding: 0;
+    }
+    
+    .site-footer a {
+        color: hsla(0, 0%, 22%, 0.7); 
+    }
+    @media screen and (max-width: 991px){
+    .div-block-312 {
+        grid-template-rows: auto auto;
+        grid-template-columns: 1fr 1fr 1fr;
+    }
+    }
+    
+      @media screen and (max-width: 479px){
+    .div-block-312 {
+      grid-template-rows: auto auto auto auto auto auto;
+      grid-template-columns: 1fr;
+    }
+    }
+    
+    .fixedhead{
+        position: fixed;
+        height: 150px;
+        width: 100%;
+        z-index: 99999;
+            background: #fff !important;
+    }
+    
+    #site-main{
+            margin-top: 200px;
+    }
+    .site-header-content{
+        display: none;
+    }
+    //responsivmenu
+    // Navigation Variables
+    $content-width: 1000px;
+    $breakpoint: 799px;
+    $nav-height: 70px;
+    $nav-background: #262626;
+    $nav-font-color: #ffffff;
+    $link-hover-color: #2581DC;
+    
+    // Outer navigation wrapper
+    .navigation {
+      height: $nav-height;
+      background: $nav-background;
+    }
+    
+    // Logo and branding
+    .brand {
+      position: absolute;
+      padding-left: 20px;
+      float: left;
+      line-height: $nav-height;
+      text-transform: uppercase;
+      font-size: 1.4em;
+      a,
+      a:visited {
+        color: $nav-font-color;
+        text-decoration: none;
+      }
+    }
+    
+    // Container with no padding for navbar
+    .nav-container {
+      max-width: $content-width;
+      margin: 0 auto;
+    }
+    
+    // Navigation 
+    nav {
+      float: right;
+      ul {
+        list-style: none;
+        margin: 0;
+        padding: 0;
+        li {
+          float: left;
+          position: relative;
+          a,
+          a:visited {
+            display: block;
+            padding: 0 20px;
+            line-height: $nav-height;
+            background: $nav-background;
+            color: $nav-font-color;
+            text-decoration: none;
+            &:hover {
+              background: $link-hover-color;
+              color: $nav-font-color;
+            }
+            &:not(:only-child):after {
+              padding-left: 4px;
+              content: ' ▾';
+            }
+          } // Dropdown list
+          ul li {
+            min-width: 190px;
+            a {
+              padding: 15px;
+              line-height: 20px;
+            }
+          }
+        }
+      }
+    }
+    
+    // Dropdown list binds to JS toggle event
+    .nav-dropdown {
+      position: absolute;
+      display: none;
+      z-index: 1;
+      box-shadow: 0 3px 12px rgba(0, 0, 0, 0.15);
+    }
+    
+    /* Mobile navigation */
+    
+    // Binds to JS Toggle
+    .nav-mobile {
+      display: none;
+      position: absolute;
+      top: 0;
+      right: 0;
+      background: $nav-background;
+      height: $nav-height;
+      width: $nav-height;
+    }
+    @media only screen and (max-width: 798px) {
+      // Hamburger nav visible on mobile only
+      .nav-mobile {
+        display: block;
+      }
+      nav {
+       width: 100%;
+        padding: $nav-height 0 15px;
+        ul {
+          display: none;
+          li {
+            float: none;
+            a {
+              padding: 15px;
+              line-height: 20px;
+            }
+            ul li a {
+              padding-left: 30px;
+            }
+          }
+        }
+      }
+      .nav-dropdown {
+        position: static;
+      }
+    }
+    @media screen and (min-width: $breakpoint) {
+      .nav-list {
+        display: block !important;
+      }
+    }
+    #nav-toggle {
+      position: absolute;
+      left: 18px;
+      top: 22px;
+      cursor: pointer;
+      padding: 10px 35px 16px 0px;
+      span,
+      span:before,
+      span:after {
+        cursor: pointer;
+        border-radius: 1px;
+        height: 5px;
+        width: 35px;
+        background: $nav-font-color;
+        position: absolute;
+        display: block;
+        content: '';
+        transition: all 300ms ease-in-out;
+      }
+      span:before {
+        top: -10px;
+      }
+      span:after {
+        bottom: -10px;
+      }
+      &.active span {
+        background-color: transparent;
+        &:before,
+        &:after {
+          top: 0;
+        }
+        &:before {
+          transform: rotate(45deg);
+        }
+        &:after {
+          transform: rotate(-45deg);
+        }
+      }
+    }
+    
+    // Page content 
+    article {
+      max-width: $content-width;
+      margin: 0 auto;
+      padding: 10px;
+    }
+    
+    //newmenubar
+            *{
+              margin: 0;
+              padding: 0;
+              box-sizing: border-box;
+              font-family: Arial, Helvetica, sans-serif;
+              text-transform: capitalize;
+              text-decoration: none;
+            }
+            
+            .header{
+             
+              top: 50px !important; left: 0; right: 0;
+              background: #fff;
+              box-shadow: 0 5px 10px rgba(0, 0, 0, .1);
+              padding: 20px 2%;
+              display: flex;
+              align-items: center;
+              justify-content: left;
+              z-index: 1000;
+              background-color: #fff !important;
+    position: inherit !important;
+            }
+            .header .logo{
+            font-weight: bolder;
+            font-size: 25px;
+            color: #333;
+            margin-right: 50px;
+            }
+            .header .navbar ul{
+            list-style: none;
+            }
+            
+            .header .navbar ul li{
+            position: relative;
+            float: left;
+            padding: 0;
+            }
+            
+            .header .navbar ul li a{
+            padding: 10px;
+            color: #333;
+            display: block;
+            font-size: 14px;
+    font-weight: 600;
+    
+            }
+    
+    .header .navbar ul li ul li a{
+            padding: 5px;
+            color: #333;
+            display: block;
+            font-size: 14px;
+    font-weight: 600;
+    }
+    
+            .header .navbar ul li a:hover{
+            
+            color: #000000;
+            }
+            
+            .header .navbar ul li ul{
+              position: absolute;
+              left: 0;
+              width: 200px;
+              background: #fff;
+              display: none;
+                  margin: 0;
+       max-width: 200px;
+        padding: 0px;
+            }
+            .header .navbar ul li ul li{
+            
+              width: 100%;
+              border-top: 1px solid #71717133;
+              padding: 0px;
+        line-height: 20px;
+            
+            }
+            .header .navbar ul li:hover > ul{ 
+            display: initial;
+            }
+            
+            #menu-bar{
+              display: none;
+            }
+            
+              .header label{
+                font-size: 20px;
+                color: #333;
+                cursor: pointer;
+                display: none;
+              }
+              .navbar-btn {
+      color: #000;
+      background-color: #fff;
+      border: 1px solid #24233a;
+      border-radius: 10px;
+      margin-left: 20px;
+      padding: 12px 24px;
+      font-size: 16px;
+          padding-left: 40px !important;
+        padding-right: 40px !important;
+    }
+    .demo-btn {
+      color: #fff !important;
+      background-color: #ffa200;
+      border-style: none;
+      border-color: #fff;
+    }
+            
+            @media(max-width:991px){
+              .header{
+                padding: 20px;
+                top: 0px !important;
+              }
+              .header label{
+                display: initial;
+              }
+              .header .navbar{
+              position: absolute;
+              top: 100px; left: 0; right: 0;
+              background:#fff;
+              border-top: 1px solid rgba(0, 0, 0, rgba(0, 0, 0, .1));
+              display: none;
+              }
+              .header .navbar ul li{
+              width: 100%;
+              }
+                .header .navbar ul li ul{
+                  position: relative;
+              width: 100%;
+              }
+            
+                  .header .navbar ul li ul li{
+             background:#eee ;
+              }
+            #menu-bar:checked ~ .navbar{
+              display: initial;
+            }
+            .navbar-btn {
+    
+                margin-bottom: 20px;
+                margin-right: 20px;
+    }
+    .section-9 {
+      display: none;
+    }
+            
+            }
+            .section-9 {
+      background-color: #0d0956;
+      background-image: url(https://uploads-ssl.webflow.com/62f35fc537dc73303f60c5dc/64535eefdcff966540031710_pattern.png);
+      background-position: 0 0;
+      background-size: contain;
+      padding-top: 15px;
+      padding-bottom: 15px;
+      position: relative;
+      text-align: center;
+    color: #fff;
+    }
+    .section-9 a{
+        color: #fff;
+        text-decoration: underline;
+    }
+    li + li {
+      margin-top: 0;
+    }
+    
+    .div-block-529 {
+        grid-column-gap: 0px;
+        grid-row-gap: 0px;
+        flex-direction: column;
+        grid-template-rows: auto;
+        grid-template-columns: 1fr 1fr;
+        grid-auto-columns: 1fr;
+        display: grid;
+    }
+    
+    
+.line-border{
+    width: 100%;
+    height: 2px;
+    background-color: #bab6b6;
+    float: left;
+    margin-top: 20px;
+}
+
+
+.link-10 {
+  color: #fff !important;
+  text-decoration: underline;
+}
+    
+.div-block-379 {
+  justify-content: flex-start;
+  align-items: center;
+  gap: 15px;
+  margin-top: 20px;
+  display: flex;
+}
+
+.g2-badgefooter {
+  width: 65px;
+  height: auto;
+  margin-right: 20px;
+  float: left;
+  height: 75px;
+}
+.g2-badges-container-footer {
+  aspect-ratio: auto;
+  object-fit: none;
+  flex-flow: row;
+  justify-content: center;
+  align-items: center;
+  width: auto;
+  padding-top: 10px;
+  padding-bottom: 10px;
+  display: block;
+  overflow: visible;
+}
+
+.div-block-504 {
+  z-index: 10;
+  color: #fff;
+  margin-bottom: -95px;
+  padding-top: 80px;
+  padding-bottom: 0;
+  position: relative;
+}
+.container-33 {
+  max-width: 1200px;
+}
+.w-layout-blockcontainer {
+  margin-left: auto;
+  margin-right: auto;
+  display: block;
+}
+.w-container::before, .w-container::after {
+  content: " ";
+  grid-area: 1/1/2/2;
+  display: table;
+}
+.div-block-505 {
+  background-color: #fff;
+  background-color: #5a21ff;
+  text-align: center;
+  background-position: 0 0;
+  border-radius: 20px;
+  padding: 100px 60px;
+}
+.heading-80 {
+  margin-top: 0;
+  margin-bottom: 40px;
+  font-size: 38px;
+  font-weight: 600;
+  line-height: 55px;
+}
+@media screen and (min-width: 1920px) {
+  .cta-btn-yellow.demo-btn, .navbar-cta-btn-yellow.demo-btn {
+    color: #fff;
+    border-style: none;
+    border-color: #fff;
+  }
+}
+@media screen and (min-width: 1440px) {
+  .cta-btn-yellow.demo-btn {
+    color: #fff;
+    background-color: #ffa200;
+    border-style: none;
+    border-color: #fff;
+  }
+}
+.cta-btn-yellow.demo-btn {
+  color: var(--untitled-ui--white);
+  background-color: #ffa200;
+  border-style: none;
+  border-color: #fff;
+  border-radius: 10px;
+  padding: 1.5rem 8.5rem;
+  font-family: Inter,sans-serif;
+  font-size: 18px;
+  font-weight: 400;
+  text-decoration: none;
+}
+body{
+    
+    font-family: Inter,sans-serif;
+}
+
+
+.div-block-435 {
+  justify-content: center;
+  display: flex;
+}
+
+
+.div-block-434 {
+  justify-content: flex-start;
+  align-items: center;
+  margin-top: 40px;
+  display: flex;
+}
+
+.link-block {
+  margin-right: 20px;
+}
+.image-105 {
+  width: 100%;
+  height: 50px;
+}
+
+
+.div-block-426 {
+  color: #fff;
+  text-align: center;
+  margin-top: 40px;
+}
+.text-block-75 {
+  font-size: 16px;
+  line-height: 26px;
+}
+
+/* navbar */
+
+     /* Navbar */
+     .navbar {
+           
+      justify-content: space-between;
+            display: flex;
+            align-items: center;
+            width: 100%;
+        }
+
+        .navbar a {
+          font-weight: 500;
+    color: #222;
+    text-decoration: none;
+    padding: 15px;
+    display: flex
+;
+    font-size: 16px;
+    
+        }
+
+        .navbar .dropdown {
+            position: relative;
+        }
+
+        /* Mega Menu */
+        .mega-menu {
+            position: absolute;
+            left: 0;
+            top: 100%;
+            width: 100%;
+            background: white;
+            display: none;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            padding: 20px;
+        }
+
+        .mega-menu .menu-column {
+            width: 33%;
+            float: left;
+            padding: 10px;
+        }
+
+        .mega-menu h3 {
+            color: blue;
+    letter-spacing: normal;
+    margin-top: 0;
+    margin-bottom: 20px;
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen, Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
+    font-size: 14px;
+    font-weight: 600;
+}
+        
+
+        .mega-menu a {
+            color: #333;
+            padding: 8px 0;
+            display: flex;
+            padding: 10px;
+        }
+
+        .mega-menu a:hover {
+            color: #344054;
+            background-color: #f2f4f7;
+            border-radius: 10px;
+        }
+
+        /* Show mega menu on hover */
+        .dropdown:hover .mega-menu {
+            display: flex;
+            justify-content: space-around;
+            
+            top: 45px;
+    border-radius: 10px;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .mega-menu {
+                flex-direction: column;
+            }
+            .mega-menu .menu-column {
+                width: 100%;
+            }
+        }
+
+
+        /* my style */
+
+        .mega-menu {
+            width: 700px;
+        }
+.menu-text p{
+    font-size: 15px
+    line-height: 1.25rem;
+    margin: 0;
+    padding: 0;
+    line-height: 20px;
+}
+
+.menu-text b{
+   font-size: 15px;
+  display: block;
+  margin-bottom: 8px;
+  line-height: 20px;
+}
+.linkboxmenu{
+    margin-bottom: 20px;
+}
+.megamenu-heading-heai{
+    height: 20px;
+}
+.megabgmenu{
+    background-color: #f4f8fd;
+}
+.technologytab{
+  width: 350px;
+}
+.Solutionstab{
+  width: 500px;
+}
+
+.arrowmove{
+  rotate: 91deg;
+    display: block;
+    width: 10px;
+    height: 10px;
+    margin-left: 12px;
+    color: #787878;
+    font-weight: 600;
+}
+
+.arrowcen{
+  display: flex;
+  align-items: center;
+}
+
+.topmenubtn{
+ 
+  background-color: #ffa200;
+  color: #fff !important;
+    border-radius: 10px;
+    padding-left: 30px !important;
+    padding-right: 30px !important;
+}
+.linkboxmenu img{
+  width: 50px !important;
+}
+.arrowicon{
+  margin-left: 5px;
+  margin-top: -3px;
+}
+        </style>
+<script>
+(function($) { // Begin jQuery
+  $(function() { // DOM ready
+    // If a link has a dropdown, add sub menu toggle.
+    $('nav ul li a:not(:only-child)').click(function(e) {
+      $(this).siblings('.nav-dropdown').toggle();
+      // Close one dropdown when selecting another
+      $('.nav-dropdown').not($(this).siblings()).hide();
+      e.stopPropagation();
+    });
+    // Clicking away from dropdown will remove the dropdown class
+    $('html').click(function() {
+      $('.nav-dropdown').hide();
+    });
+    // Toggle open and close nav styles on click
+    $('#nav-toggle').click(function() {
+      $('nav ul').slideToggle();
+    });
+    // Hamburger to X toggle
+    $('#nav-toggle').on('click', function() {
+      this.classList.toggle('active');
+    });
+  }); // end DOM ready
+})(jQuery); // end jQuery
+
+</script>
+
+
+
+</head>
+<body class="post-template tag-ai tag-hash-rohan tag-deep-learning tag-guide tag-transfer-learning tag-cnn is-head-left-logo has-cover">
+
+ 
+
+
+
+
+
+
+
+
+
+
+
+<div class="viewport">
+
+
+
+   <header id="gh-head" class="gh-head outer header">
+   <a href="https://www.labellerr.com/" class="logo"><img src="https://uploads-ssl.webflow.com/62f35fc537dc73303f60c5dc/6309df94f962e22519a7599d_Labellerr%20logo.svg" alt="Labellerr logo"></a>
+           <input type="checkbox" id="menu-bar">
+          <label for="menu-bar"><img src="https://uploads-ssl.webflow.com/62f35fc537dc73303f60c5dc/64bfd0a2772b2c24b04f9a64_burger-menu-left-svgrepo-com.svg" style="width: 40px;" alt="hambergar icon"></label>
+          <nav class="navbar">
+            <div style="display: flex
+;">      
+              <div class="dropdown">
+                <a href="#" class="arrowcen">Product <b class="arrowicon"><img src="https://cdn.prod.website-files.com/62f35fc537dc73303f60c5dc/67de8a366ff9ec4a8299398b_icon.png" alt="Dropdown arrow icon"></b></a>
+                <div class="mega-menu">
+    <!-- Column 1: First 3 products -->
+    <div class="menu-column">
+        <div class="linkboxmenu">
+            <a href="https://www.labellerr.com/data-annotate">
+                <div style="margin-right: 10px;">
+                    <img src="https://cdn.prod.website-files.com/62f35fc537dc73303f60c5dc/67dab9ba19c661972845a490_1.png" alt="Data Annotation Platform icon">
+                </div>
+                <div class="menu-text">
+                    <p><b>Data Annotation Platform</b>
+                    Comprehensive solution for efficient data labeling.</p>
+                </div>
+            </a>
+        </div>
+        <div class="linkboxmenu">
+            <a href="https://www.labellerr.com/video-annotation-platform">
+                <div style="margin-right: 10px;">
+                    <img src="https://cdn.prod.website-files.com/62f35fc537dc73303f60c5dc/67dab9ba482c17cb166660a5_2.png" alt="Video Annotation Platform">
+                </div>
+                <div class="menu-text">
+                    <p><b>Video Annotation Platform</b>
+                    Advanced tools for dynamic video labeling.</p>
+                </div>
+            </a>
+        </div>
+        <div class="linkboxmenu">
+            <a href="https://www.labellerr.com/text-annotation-platform">
+                <div style="margin-right: 10px;">
+                    <img src="https://cdn.prod.website-files.com/62f35fc537dc73303f60c5dc/67dab9baa2d3058fbd67095d_3.png" alt="Text Annotation Platform">
+                </div>
+                <div class="menu-text">
+                    <p><b>Text Annotation Platform</b>
+                    Powerful tools for accurate text labeling.</p>
+                </div>
+            </a>
+        </div>
+    </div>
+    
+    <!-- Column 2: Next 3 products -->
+    <div class="menu-column">
+        <div class="linkboxmenu">
+            <a href="https://www.labellerr.com/annotation-services">
+                <div style="margin-right: 10px;">
+                    <img src="https://cdn.prod.website-files.com/62f35fc537dc73303f60c5dc/67dab9bb4da02e625698f0a5_5.png" alt="Annotation Services">
+                </div>
+                <div class="menu-text">
+                    <p><b>Annotation Services</b>
+                    Professional data labeling by experts.</p>
+                </div>
+            </a>
+        </div>
+        <div class="linkboxmenu">
+            <a href="https://www.labellerr.com/image-annotation-platform">
+                <div style="margin-right: 10px;">
+                    <img src="https://cdn.prod.website-files.com/62f35fc537dc73303f60c5dc/67dab9ba0e5123d91bd0d28b_7.png" alt="Image Annotation Platform">
+                </div>
+                <div class="menu-text">
+                    <p><b>Image Annotation Platform</b>
+                    Efficient and scalable image annotation solution.</p>
+                </div>
+            </a>
+        </div>
+        <div class="linkboxmenu">
+            <a href="https://www.labellerr.com/dicom-annotation-tool">
+                <div style="margin-right: 10px;">
+                    <img src="https://cdn.prod.website-files.com/62f35fc537dc73303f60c5dc/67dab9bad3bf5859a519c1e7_4.png" alt="Dicom Annotation Tools">
+                </div>
+                <div class="menu-text">
+                    <p><b>Dicom Annotation Tools</b>
+                    Precision tools for medical image annotations.</p>
+                </div>
+            </a>
+        </div>
+    </div>
+    
+    <!-- Column 3: Product Tour (keeps the visual balance) -->
+    <div class="menu-column megabgmenu">
+        <h3 class="megamenu-heading-heai">Product tour</h3>
+        <div class="linkboxmenu">
+            <a href="https://www.labellerr.com/interactive-demo">
+                <div style="margin-right: 10px;">
+                    <img src="https://cdn.prod.website-files.com/62f35fc537dc73303f60c5dc/67dab9bae45553f5ff4bdf0f_8.png" alt="Interactive Demo">
+                </div>
+                <div class="menu-text">
+                    <p><b>Interactive Demo</b>
+                    Explore the platform with an interactive tour.</p>
+                </div>
+            </a>
+        </div>
+        <div class="linkboxmenu">
+            <a href="https://www.labellerr.com/product-demo">
+                <div style="margin-right: 10px;">
+                    <img src="https://cdn.prod.website-files.com/62f35fc537dc73303f60c5dc/67dab9bb2811b03de29f308b_9.png" alt="Product Demo">
+                </div>
+                <div class="menu-text">
+                    <p><b>Product Demos</b>
+                    Watch live demonstrations of our products.</p>
+                </div>
+            </a>
+        </div>
+    </div>
+</div>
+
+            </div>
+            
+            <div class="dropdown">
+              <a href="#" class="arrowcen">Technology <b class="arrowicon"><img src="https://cdn.prod.website-files.com/62f35fc537dc73303f60c5dc/67de8a366ff9ec4a8299398b_icon.png" alt="Dropdown Icon"></b></a>
+              
+              <div class="mega-menu technologytab">
+                  <div class="menu-column1">
+                      <h3 class="megamenu-heading-heai"> </h3>
+                      <div class="linkboxmenu">
+                          <a href="https://www.labellerr.com/technology">
+                              <div style="margin-right: 10px;"><img src="https://cdn.prod.website-files.com/62f35fc537dc73303f60c5dc/67dabf2a558bdba4ec788f0c_21.png" alt="Technology Dropdown Menu" style="width: 30px !important;"></div>
+                              <div class="menu-text">
+                                <P>
+                                  <b>Smart Feedback Loop</b>
+                                  Automated optimization in data labeling processes.
+                                </P>          
+  
+  
+                             </div>
+                         </a>
+                       </div>
+                       <div class="linkboxmenu">
+                          <a href="https://www.labellerr.com/pre-labelling">
+                              <div style="margin-right: 10px;"><img src="https://cdn.prod.website-files.com/62f35fc537dc73303f60c5dc/67dabf2bce2a258b648feede_22.png" alt="Labellerr Prelabelling" style="width: 30px !important;"></div>
+                              <div class="menu-text">
+                                <P>
+                                  <b>Pre-Labelling</b>
+                                  AI-assisted initial labeling for faster workflows.
+                                </P>          
+  
+  
+                             </div>
+                         </a>
+                       </div>
+                      
+                  </div>
+                  
+                 
+              </div>
+          </div>
+            
+            <div class="dropdown">
+              <a href="#" class="arrowcen">Solutions <b class="arrowicon"><img src="https://cdn.prod.website-files.com/62f35fc537dc73303f60c5dc/67de8a366ff9ec4a8299398b_icon.png" alt="Solutions Arrow Icon"></b></a>
+              
+              <div class="mega-menu Solutionstab">
+                  <div class="menu-column1">
+                      <h3 class="megamenu-heading-heai"> </h3>
+                      <div class="linkboxmenu">
+                          <a href="https://www.labellerr.com/llm">
+                              <div style="margin-right: 10px;"><img src="https://cdn.prod.website-files.com/62f35fc537dc73303f60c5dc/67dabf2a55d34c043dbd7f1c_31.png" alt="Labellerr LLM"></div>
+                              <div class="menu-text">
+                                <P>
+                                  <b>LLM</b>
+                                  Specialized tools for large language models.
+                                </P>          
+  
+  
+                             </div>
+                         </a>
+                       </div>
+                       <div class="linkboxmenu">
+                          <a href="https://www.labellerr.com/automotive">
+                              <div style="margin-right: 10px;"><img src="https://cdn.prod.website-files.com/62f35fc537dc73303f60c5dc/67dabf2a5291946333fe3b93_32.png" alt="Labellerr Services In Automotive"></div>
+                              <div class="menu-text">
+                                <P>
+                                  <b>Automotive</b>
+                                  Advanced data annotation for autonomous vehicles.
+                                </P>          
+  
+  
+                             </div>
+                         </a>
+                       </div>
+                       <div class="linkboxmenu">
+                          <a href="https://www.labellerr.com/security-surveillance">
+                              <div style="margin-right: 10px;"><img src="https://cdn.prod.website-files.com/62f35fc537dc73303f60c5dc/67dabf2b9f87a4dc79f60595_33.png" alt="Labellerr Services In Security and Surveillance"></div>
+                              <div class="menu-text">
+                                <P>
+                                  <b>Security & Surveillance</b>
+                                  Enhance security with precise video labeling.
+                                </P>          
+  
+  
+                             </div>
+                         </a>
+                       </div>
+                       <div class="linkboxmenu">
+                        <a href="https://www.labellerr.com/retail">
+                            <div style="margin-right: 10px;"><img src="https://cdn.prod.website-files.com/62f35fc537dc73303f60c5dc/67dabf2af66c08cae091d2e1_34.png" alt="Labellerr Services In Retail"></div>
+                            <div class="menu-text">
+                              <P>
+                                <b>Retail</b>
+                                Boost retail analytics with accurate data tagging.
+                              </P>          
+
+
+                           </div>
+                       </a>
+                     </div>
+                     <div class="linkboxmenu">
+                      <a href="https://www.labellerr.com/healthcare-solution">
+                          <div style="margin-right: 10px;"><img src="https://cdn.prod.website-files.com/62f35fc537dc73303f60c5dc/67dabf298d6824f7123b7d8a_35.png" alt="Labellerr Services In Healthcare"></div>
+                          <div class="menu-text">
+                            <P>
+                              <b>Healthcare</b>
+                              Reliable data annotation for medical AI.
+                            </P>          
+
+
+                         </div>
+                     </a>
+                   </div>
+                  </div>
+                  <div class="">
+                      <h3 class="megamenu-heading-heai"></h3>
+                      <div class="linkboxmenu">
+                          <a href="https://www.labellerr.com/biotechnology-and-life-sciences">
+                              <div style="margin-right: 10px;"><img src="https://cdn.prod.website-files.com/62f35fc537dc73303f60c5dc/67dabf29cbba83713517c92d_36.png" alt="Labellerr Services In Biotechnology and Life Sciences"></div>
+                              <div class="menu-text">
+                                <P>
+                                  <b>Biotechnology</b>
+                                  Empowering biotech with precise data insights.
+                                </P>          
+  
+  
+                             </div>
+                         </a>
+                       </div>
+                       <div class="linkboxmenu">
+                          <a href="https://www.labellerr.com/energy">
+                              <div style="margin-right: 10px;"><img src="https://cdn.prod.website-files.com/62f35fc537dc73303f60c5dc/67dabf29b93345a2c33ac3ee_37.png" alt="Labellerr Services In Energy"></div>
+                              <div class="menu-text">
+                                <P>
+                                  <b>Energy</b>
+                                  Optimize energy systems with smart data labeling.
+                                </P>          
+  
+  
+                             </div>
+                         </a>
+                       </div>
+                       <div class="linkboxmenu">
+                          <a href="https://www.labellerr.com/sports-vision">
+                              <div style="margin-right: 10px;"><img src="https://cdn.prod.website-files.com/62f35fc537dc73303f60c5dc/67dabf29f66c08cae091d16f_38.png" alt="Labellerr Services In Sports"></div>
+                              <div class="menu-text">
+                                <P>
+                                  <b>Sports Vision</b>
+                                  Enhance sports analysis with video annotations.
+                                </P>          
+  
+  
+                             </div>
+                         </a>
+                       </div>
+                       <div class="linkboxmenu">
+                        <a href="https://www.labellerr.com/manufacturing">
+                            <div style="margin-right: 10px;"><img src="https://cdn.prod.website-files.com/62f35fc537dc73303f60c5dc/67dabf29e98973d48ddd4e44_39.png" alt="Labellerr Services In Manufacturing"></div>
+                            <div class="menu-text">
+                              <P>
+                                <b>Manufacturing</b>
+                                Streamline manufacturing with accurate data tagging.
+                              </P>          
+
+
+                           </div>
+                       </a>
+                     </div>
+                     <div class="linkboxmenu">
+                      <a href="https://www.labellerr.com/agriculture-solution">
+                          <div style="margin-right: 10px;"><img src="https://cdn.prod.website-files.com/62f35fc537dc73303f60c5dc/67dabf299f87a4dc79f5ffdb_30.png" alt="Labellerr Services In Agriculture"></div>
+                          <div class="menu-text">
+                            <P>
+                              <b>Agriculture</b>
+                              Support precision farming with data annotation.
+                            </P>          
+
+
+                         </div>
+                     </a>
+                   </div>
+                  </div>
+                 
+              </div>
+          </div>
+            
+            <div class="dropdown">
+              <a href="#" class="arrowcen">Learn <b class="arrowicon"><img src="https://cdn.prod.website-files.com/62f35fc537dc73303f60c5dc/67de8a366ff9ec4a8299398b_icon.png" alt="Dropdown Icon"></b></a>
+            
+              <div class="mega-menu technologytab">
+                  <div class="menu-column1">
+                      <h3 class="megamenu-heading-heai"> </h3>
+                      <div class="linkboxmenu">
+                          <a href="https://www.labellerr.com/blog/">
+                              <div style="margin-right: 10px;"><img src="https://cdn.prod.website-files.com/62f35fc537dc73303f60c5dc/67dabf29ac844f1933b6bcae_41.png" alt="Blog Section" style="width: 20px !important;"></div>
+                              <div class="menu-text">
+                                <P>
+                                  <b>Blog</b>
+                                  Insights and updates from our experts.
+                                </P>          
+  
+  
+                             </div>
+                         </a>
+                       </div>
+                       <div class="linkboxmenu">
+                          <a href="https://www.labellerr.com/case-studies">
+                              <div style="margin-right: 10px;"><img src="https://cdn.prod.website-files.com/62f35fc537dc73303f60c5dc/67dabf29bacca00bee5b6b03_42.png" alt="Case Studies" style="width: 20px !important;"></div>
+                              <div class="menu-text">
+                                <P>
+                                  <b>Case Studies</b>
+                                  Real-world success stories and applications.
+                                </P>          
+  
+  
+                             </div>
+                         </a>
+                       </div>
+                       <div class="linkboxmenu">
+                          <a href="https://www.labellerr.com/expert-discussions">
+                              <div style="margin-right: 10px;"><img src="https://cdn.prod.website-files.com/62f35fc537dc73303f60c5dc/67dabf29101bfe3ad5188846_43.png" alt="Expert Discussion" style="width: 20px !important;"></div>
+                              <div class="menu-text">
+                                <P>
+                                  <b>Expert discussions</b>
+                                  In-depth conversations with industry leaders.
+                                </P>          
+  
+  
+                             </div>
+                         </a>
+                       </div>
+                       <div class="linkboxmenu">
+                        <a href="https://www.labellerr.com/faq">
+                            <div style="margin-right: 10px;"><img src="https://cdn.prod.website-files.com/62f35fc537dc73303f60c5dc/67dabf293aa49ae3e4cb893e_44.png" alt="FAQs" style="width: 20px !important;"></div>
+                            <div class="menu-text">
+                              <P>
+                                <b>FAQ</b>
+                                Answers to common questions and concerns.
+                              </P>          
+
+
+                           </div>
+                       </a>
+                     </div>
+                   <div class="linkboxmenu">
+                    <a href="https://docs.labellerr.com/">
+                        <div style="margin-right: 10px;"><img src="https://cdn.prod.website-files.com/62f35fc537dc73303f60c5dc/67dabf29056cf63ff0fbd2a9_46.png" alt="SDK" style="width: 20px !important;"></div>
+                        <div class="menu-text">
+                          <P>
+                            <b>Documentation</b>
+                            Product and SDK Documentation.
+                          </P>          
+
+
+                       </div>
+                   </a>
+                 </div>
+                  </div>
+                  
+                 
+              </div>
+          </div>
+            <a href="https://www.labellerr.com/pricing">Pricing</a>
+          </div>
+          <div style="display: flex;">
+            <a href="https://login.labellerr.com/">Login</a>
+            <a href="https://www.labellerr.com/book-a-demo" class="topmenubtn">Schedule a call</a>
+          </div>
+          
+        </nav>
+   
+   
+   
+           <div class="gh-head-inner inner" style="display: none;">
+               <div class="gh-head-brand">
+                   <a class="gh-head-logo" href="https://www.labellerr.com/blog">
+                           <img src="https://www.labellerr.com/blog/content/images/2022/10/LabellerrLogo_White-1.webp" alt="Labellerr AI">
+                   </a>
+                   <button class="gh-search gh-icon-btn" data-ghost-search><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2" width="20" height="20"><path stroke-linecap="round" stroke-linejoin="round" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path></svg></button>
+                   <button class="gh-burger"></button>
+               </div>
+   
+               <nav class="gh-head-menu" style="display: none;">
+                   <ul class="nav">
+    <li class="nav-home"><a href="https://www.labellerr.com">Home</a></li>
+    <li class="nav-pricing"><a href="https://www.labellerr.com/pricing">Pricing</a></li>
+    <li class="nav-contact"><a href="https://labellerr.com/contact-us">Contact</a></li>
+    <li class="nav-blog"><a href="https://www.labellerr.com/blog/">Blog</a></li>
+    <li class="nav-visit-sandbox"><a href="https://demo.labellerr.com/sandbox">Visit Sandbox</a></li>
+</ul>
+
+               </nav>
+   
+           </div>
+       </header>
+
+
+    <div class="site-content">
+        
+
+
+
+
+<script type='text/javascript' src='https://platform-api.sharethis.com/js/sharethis.js#property=67e4036f86189a0019fafd8b&product=inline-share-buttons' async='async'></script>
+<style>
+.contenernew{
+    max-width: 1200px;
+    margin-left: auto;
+    margin-right: auto;
+    display: block;
+}
+.blogsecmain{
+    display: flex;
+}
+.blogleftsec{
+    width:68%;
+    padding-left:20px;
+}
+
+.blogrightsec{
+    width: 320px;
+    height: 630px;
+    background-color: #111b31;
+    border-radius: 10px;
+    font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    text-align: center;
+    border: #7cacf8 solid 1px;
+    
+    position: sticky;
+    top: 20px;
+    margin-left:50px;
+}
+.h1text{
+   font-size: 35px;
+  margin-top: 20px;
+  margin-bottom: 30px;
+  line-height: 44px;
+  color: #fff;
+  position: relative;
+  z-index: 5;
+  font-weight: 700;
+}
+    
+}
+.blogrightsec h1 b{
+    font-weight: 800;
+    
+}
+.blogrightsec a{
+    text-decoration: none;
+    color: #fff;
+    margin-top: 25px;
+  background-color: #ffa200;
+    border-radius: 10px;
+    padding: 15px 40px;
+    font-size: 16px;
+    font-weight: 700;
+    display: block;
+}
+.innerbox{
+    padding: 20px;
+    position: relative;
+    height:100%;
+}
+.innerbox p{
+    font-size: 18px;
+    font-weight: 500;
+    color:#fff;
+
+}
+.blogleftsec a{
+    color: #0011ff;
+    text-decoration: none;
+    font-weight: 500;
+}
+
+.blogleftsec p {
+    font-family: var(--font-serif);
+    font-size: 2rem;
+    font-weight: 400;
+    line-height: 1.6em;
+        margin-top: 30px;
+}
+
+@media screen and (max-width: 991px) {
+.blogsecmain{
+    flex-direction: column;
+    padding-left: 20px;
+    padding-right: 20px;
+}
+
+.blogleftsec{
+    width: 100%;
+}
+.blogrightsec {
+    width: 100%;
+    margin-left: 0px;
+}
+}
+
+
+.posi-1{
+    width: 100%;
+  position: absolute;
+  inset: 0% auto auto 0%;
+}
+
+.posi-2{
+    width: 100%;
+  position: absolute;
+  inset: auto 0% 0% auto;
+}
+
+.freedata{
+text-transform: uppercase;
+  color: #ffa200;
+  font-weight: 800;
+  font-style: italic;
+  font-size: 60px;
+  margin-top: 20px;
+  display: block;
+  margin-bottom: 35px;
+
+}
+.freesubtext{
+    font-size: 32px;
+  color: #fff;
+  font-weight: 700;
+  margin-top: 20px;
+  margin-bottom: 20px;
+  line-height: 40px;
+}
+.st-btn .st-last {
+    display: block !important;
+}
+</style>
+
+
+
+<main id="site-main" class="site-main">
+
+<article class="article post tag-ai tag-hash-rohan tag-deep-learning tag-guide tag-transfer-learning tag-cnn ">
+
+    <header class="article-header gh-canvas">
+
+        <div class="article-tag post-card-tags">
+                <span class="post-card-primary-tag">
+                    <a href="/blog/tag/ai/">AI</a>
+                </span>
+        </div>
+
+        <h1 class="article-title">Food Recommendation Models Using Deep Learning</h1>
+
+
+        <div class="article-byline">
+        <section class="article-byline-content">
+
+            <ul class="author-list">
+                <li class="author-list-item">
+                    <a href="/blog/author/sumit/" class="author-avatar">
+                        <img class="author-profile-image" src="/blog/content/images/size/w100/2023/12/Sumit.jpeg" alt="Sumit Singh" />
+                    </a>
+                </li>
+            </ul>
+
+            <div class="article-byline-meta">
+                <h4 class="author-name"><a href="/blog/author/sumit/">Sumit Singh</a></h4>
+                <div class="byline-meta-content">
+                    <time class="byline-meta-date" datetime="2024-03-06">Mar 6, 2024</time>
+                        <span class="byline-reading-time"><span class="bull">&bull;</span> 4 min read</span>
+                </div>
+                
+            </div>
+
+        </section>
+        <div>
+            <b>Share this blog</b>
+           <!-- ShareThis BEGIN --><div class="sharethis-inline-share-buttons"></div><!-- ShareThis END -->
+      
+        </div>
+
+        </div>
+
+            <figure class="article-image">
+                <img
+                    srcset="/blog/content/images/size/w300/2024/03/image--6-.webp 300w,
+                            /blog/content/images/size/w600/2024/03/image--6-.webp 600w,
+                            /blog/content/images/size/w1000/2024/03/image--6-.webp 1000w,
+                            /blog/content/images/size/w2000/2024/03/image--6-.webp 2000w"
+                    sizes="(min-width: 1400px) 1400px, 92vw"
+                    src="/blog/content/images/size/w2000/2024/03/image--6-.webp"
+                    alt="Food Recommendation Models Using Deep Learning"
+                />
+                    <figcaption><span style="white-space: pre-wrap;">Food recommendations from ingredients Image using Deep learning</span></figcaption>
+            </figure>
+
+    </header>
+
+    <section>
+        <div class="contenernew">
+            <div class="blogsecmain">
+            <div class="blogleftsec"> <h2 id="introduction"><br>Introduction</h2><p>In the age of information overload, finding the perfect recipe can sometimes feel like searching for a needle in a haystack. With countless cooking websites, blogs, and cookbooks available, it can be overwhelming to go through all the options to find a recipe that suits your taste preferences and dietary restrictions. </p><p>However, advancements in artificial intelligence, particularly deep learning, are revolutionizing the way we discover and interact with food recipes.</p><h2 id="understanding-deep-learning">Understanding Deep Learning</h2><p><a href="https://aws.amazon.com/what-is/deep-learning?ref=labellerr.com">Deep learning </a>is a subset of machine learning that focuses on training artificial neural networks to perform tasks by learning from large amounts of data. These neural networks consist of interconnected layers of nodes that process input data and progressively learn to recognize patterns and make predictions.</p><p>One of the key advantages of deep learning is its ability to automatically extract meaningful features from raw data, making it particularly well-suited for tasks such as image recognition, natural language processing, and, as we'll explore in this post, recipe recommendation based on ingredient detection.</p><p><a href="https://www.ibm.com/topics/convolutional-neural-networks?ref=labellerr.com">Convolutional Neural Networks</a> (CNNs), a type of deep learning architecture, have proven particularly effective for tasks such as<a href="https://huggingface.co/tasks/image-classification?ref=labellerr.com"> image classification</a>, <a href="https://in.mathworks.com/discovery/object-detection.html?ref=labellerr.com">object detection</a>, and<a href="https://www.labellerr.com/blog/an-intro-to-segment-anything-model/"> <u>image segmentation</u></a>.</p><p>CNNs work by processing images through multiple layers of convolutional and pooling operations, gradually extracting hierarchical features that capture the spatial relationships between pixels.<br><br><a href="https://brilliant.org/wiki/backpropagation?ref=labellerr.com">Backpropagation</a> allows these networks learn to recognize patterns and objects in images, making them ideal for analyzing and interpreting food ingredient images.</p><h2 id="implementing-a-model">Implementing a Model</h2><p><img src="https://cdn.labellerr.com/1%20Food%20recommendations%20from%20ingredients/ingredients.webp" alt="ingredients present in food" loading="lazy"></p>
+<p>To build a system for recommending food recipes based on detected ingredients, we'll need to follow a multi-step pipeline:</p><h3 id="data-collection-and-preprocessing">Data Collection and Preprocessing</h3><p>Acquire a large dataset of ingredient images with corresponding labels denoting the ingredients present in each image.</p><p>Preprocess the images by resizing them to a uniform size, applying normalization to ensure consistent lighting and color, and augmenting the dataset to increase diversity and robustness.</p><h3 id="model-selection-and-training">Model Selection and Training </h3><p>Choose a pre-trained convolutional neural network (CNN) architecture such as <a href="https://en.wikipedia.org/wiki/Residual_neural_network?ref=labellerr.com">ResNet</a>, <a href="https://www.baeldung.com/cs/inception-networks?ref=labellerr.com">Inception</a>, or <a href="https://huggingface.co/docs/transformers/model_doc/efficientnet?ref=labellerr.com">EfficientNet</a> as the base model.</p><p>Fine-tune the selected CNN on the dataset of ingredient images using transfer learning, adjusting the model's weights to adapt to the specific task of ingredient recognition.</p><p>Utilize techniques such as dropout regularization and batch normalization to prevent over-fitting and improve generalization performance.</p><h3 id="feature-extraction">Feature Extraction</h3><p>Extract high-level features from the last convolutional layer of the trained CNN, capturing semantic information about the presence and arrangement of different ingredients in the images.</p><p>Optionally, we can also use techniques such as <a href="https://en.wikipedia.org/wiki/Principal_component_analysis?ref=labellerr.com">principal component analysis</a> (PCA) or t-distributed stochastic neighbor embedding (t-SNE) to further reduce the dimensionality of the extracted features while preserving their discriminative power.</p><h3 id="recipe-representation-and-matching">Recipe Representation and Matching</h3><p>Encode each recipe in the database into a vector representation, either through methods like bag-of-words or using embeddings trained specifically for recipe text.</p><p>Calculate the similarity between the feature vector of the input ingredient image and the vector representations of recipes in the database, using metrics such as cosine similarity or Euclidean distance.</p><p>Rank the recipes based on their similarity scores and filter the results to provide a set of top-k recommendations to the user.</p><h3 id="evaluation-and-optimization">Evaluation and Optimization</h3><p>Assess the performance of the recommendation system using evaluation metrics such as precision, recall, and F1-score, measured against a held-out validation set or through user studies.</p><p>Fine-tune hyperparameters such as learning rate, batch size, and optimization algorithm using techniques like grid search or Bayesian optimization to optimize the model's performance.</p><p>Continuously monitor and update the recommendation system based on user feedback and changing data distributions to ensure its effectiveness and relevance over time.</p><p>By following this pipeline, we can construct a robust and efficient system for recommending recipes based on ingredient images, using the power of deep learning and computer vision to enhance the culinary experience for users.</p><h2 id="advantages-of-ingredient-image-based-recipe-recommendations">Advantages of Ingredient Image-Based Recipe Recommendations</h2><p><img src="https://cdn.labellerr.com/1%20Food%20recommendations%20from%20ingredients/Ingredients-detection.webp" alt="ingredients detection" loading="lazy"></p>
+<h3 id="real-time-suggestions">Real-Time Suggestions</h3><p>Instantaneous processing of ingredient images enables on-the-fly recipe recommendations, allowing users to make informed cooking decisions in real-time.</p><h3 id="adaptability">Adaptability </h3><p>The system can adapt to changing ingredient availability, and user preferences, ensuring that the recommendations remain relevant and up-to-date.</p><h3 id="reduce-food-waste">Reduce Food Waste</h3><p>This innovative approach lets you utilize ingredients you already have, significantly reducing food waste. By suggesting recipes based on what's on hand, you can prevent perfectly good food from ending up in the trash, saving money and contributing to a more sustainable lifestyle.</p><h3 id="cater-to-dietary-needs">Cater to Dietary Needs</h3><p>Whether you have allergies, follow a specific diet, or simply prefer certain ingredients, ingredient image-based recommendations can be adjusted according to your needs. Many systems allow you to specify dietary preferences, filtering the suggested recipes to ensure they align with your requirements.</p><h2 id="conclusion">Conclusion</h2><p>In conclusion, the fusion of deep learning and computer vision to provide recipe recommendations based on ingredient images represents a significant leap forward in culinary technology.<br><br> By leveraging the power of neural networks, this innovative approach offers users an intuitive and seamless way to discover new recipes tailored to their preferences and dietary needs.</p><p>As this technology continues to evolve, it promises to revolutionize the way we interact with food and explore new culinary horizons.</p><h2 id="frequently-asked-questions">Frequently Asked Questions</h2><h3 id="q1-how-does-the-system-identify-ingredients-from-images">Q1) How does the system identify ingredients from images?</h3><p>The system utilizes deep learning algorithms, particularly Convolutional Neural Networks (CNNs), trained on large datasets of ingredient images. These networks learn to recognize patterns and features in images, enabling them to accurately identify ingredients based on visual cues such as shape, color, and texture.</p><h3 id="q2-what-types-of-ingredients-can-the-system-recognize">Q2) What types of ingredients can the system recognize?</h3><p>The system is capable of recognizing a wide range of ingredients, including fruits, vegetables, herbs, spices, meats, grains, and dairy products. It can identify both individual ingredients and complex combinations present in dishes.<br><br></p></div>
+            <div class="blogrightsec">
+        <div class="innerbox">
+            <img src="https://cdn.prod.website-files.com/62f35fc537dc73303f60c5dc/67e127985bfba1f5d4d362d4_Group%202493.png" class="posi-1" alt="Blue Decoration Semi-Circle">
+            <div style="position: relative;z-index: 10;">      
+<div class="freedata">Free  </div> 
+  
+ <div class="freesubtext"> Data Annotation Workflow Plan </div>
+  <p>Simplify Your Data Annotation Workflow With Proven Strategies</p>
+  <div style="text-align: center;padding-left: 70px;padding-top: 20px;">
+  <img src="https://cdn.prod.website-files.com/62f35fc537dc73303f60c5dc/67ea823be93098974bff997d_679a1e1b7d9cc_lead-magnet-book-removebg-preview%20(1).png" style="width: 150px;" alt="Free data annotation guide book cover">
+  </div>
+  <a href="https://scale-with-ease.labellerr.com/free-data-annotation-guide">Download the Free Guide</a>
+  </div>
+
+        <img src="https://cdn.prod.website-files.com/62f35fc537dc73303f60c5dc/67e128422bd4ef60d8871ee1_Group%202494.png" class="posi-2" alt="Blue Decoration Semi-Circle">
+    </div>
+</div>
+
+        </div>
+        </div>
+
+    </section>
+
+
+
+
+        <section class="article-comments gh-canvas">
+            
+        <script defer src="https://cdn.jsdelivr.net/ghost/comments-ui@~0.20/umd/comments-ui.min.js" data-ghost-comments="https://www.labellerr.com/blog/" data-api="https://www.labellerr.com/blog/ghost/api/content/" data-admin="https://www.labellerr.com/blog/ghost/" data-key="626ffb01df4c3821b704be1525" data-title="null" data-count="true" data-post-id="65e606a574316cadf268e211" data-color-scheme="auto" data-avatar-saturation="60" data-accent-color="#0040ff" data-comments-enabled="all" data-publication="Labellerr AI" crossorigin="anonymous"></script>
+    
+        </section>
+
+</article>
+</main>
+
+
+
+
+            <aside class="read-more-wrap outer">
+                <div class="read-more inner">
+                        
+<article class="post-card post">
+
+    <a class="post-card-image-link" href="/blog/genie-3-google-deepmind-world-model/">
+
+        <img class="post-card-image"
+            srcset="/blog/content/images/size/w300/2026/02/Blog-feature-image.png 300w,
+                    /blog/content/images/size/w600/2026/02/Blog-feature-image.png 600w,
+                    /blog/content/images/size/w1000/2026/02/Blog-feature-image.png 1000w,
+                    /blog/content/images/size/w2000/2026/02/Blog-feature-image.png 2000w"
+            sizes="(max-width: 1000px) 400px, 800px"
+            src="/blog/content/images/size/w600/2026/02/Blog-feature-image.png"
+            alt="Genie 3"
+            loading="lazy"
+        />
+
+
+    </a>
+
+    <div class="post-card-content">
+
+        <a class="post-card-content-link" href="/blog/genie-3-google-deepmind-world-model/">
+            <header class="post-card-header">
+                <div class="post-card-tags">
+                </div>
+                <h2 class="post-card-title">
+                    Genie 3 by Google DeepMind Is Not a Video Generator It’s a World Builder
+                </h2>
+            </header>
+                <div class="post-card-excerpt">Genie 3 by Google DeepMind is a real-time 3D world model that creates interactive, persistent environments. It enables scalable egocentric data for robotics training, helping embodied AI learn navigation, perception, and long-horizon reasoning.</div>
+        </a>
+
+        <footer class="post-card-meta">
+            <time class="post-card-meta-date" datetime="2026-02-03">Feb 3, 2026</time>
+                <span class="post-card-meta-length">8 min read</span>
+                <script
+    data-ghost-comment-count="69819e6105bc8302d3f60377"
+    data-ghost-comment-count-empty=""
+    data-ghost-comment-count-singular="comment"
+    data-ghost-comment-count-plural="comments"
+    data-ghost-comment-count-tag="span"
+    data-ghost-comment-count-class-name=""
+    data-ghost-comment-count-autowrap="true"
+>
+</script>
+        </footer>
+
+    </div>
+
+</article>
+                        
+<article class="post-card post">
+
+    <a class="post-card-image-link" href="/blog/neoverse-4d-world-model/">
+
+        <img class="post-card-image"
+            srcset="/blog/content/images/size/w300/2026/01/Blog-feature-image-7.webp 300w,
+                    /blog/content/images/size/w600/2026/01/Blog-feature-image-7.webp 600w,
+                    /blog/content/images/size/w1000/2026/01/Blog-feature-image-7.webp 1000w,
+                    /blog/content/images/size/w2000/2026/01/Blog-feature-image-7.webp 2000w"
+            sizes="(max-width: 1000px) 400px, 800px"
+            src="/blog/content/images/size/w600/2026/01/Blog-feature-image-7.webp"
+            alt="NeoVerse"
+            loading="lazy"
+        />
+
+
+    </a>
+
+    <div class="post-card-content">
+
+        <a class="post-card-content-link" href="/blog/neoverse-4d-world-model/">
+            <header class="post-card-header">
+                <div class="post-card-tags">
+                </div>
+                <h2 class="post-card-title">
+                    NeoVerse 4D World Model: Escaping the 4D Data Bottleneck
+                </h2>
+            </header>
+                <div class="post-card-excerpt">NeoVerse is a scalable 4D world model that reconstructs dynamic scenes directly from in-the-wild monocular videos. Using a pose-free, feed-forward design, it eliminates multi-view capture and heavy preprocessing while enabling fast, high-quality 4D reconstruction and video generation.</div>
+        </a>
+
+        <footer class="post-card-meta">
+            <time class="post-card-meta-date" datetime="2026-02-03">Feb 3, 2026</time>
+                <span class="post-card-meta-length">7 min read</span>
+                <script
+    data-ghost-comment-count="6970a17305bc8302d3f5ff96"
+    data-ghost-comment-count-empty=""
+    data-ghost-comment-count-singular="comment"
+    data-ghost-comment-count-plural="comments"
+    data-ghost-comment-count-tag="span"
+    data-ghost-comment-count-class-name=""
+    data-ghost-comment-count-autowrap="true"
+>
+</script>
+        </footer>
+
+    </div>
+
+</article>
+                        
+<article class="post-card post">
+
+    <a class="post-card-image-link" href="/blog/ai-pull-up-counter-yolo11-pose/">
+
+        <img class="post-card-image"
+            srcset="/blog/content/images/size/w300/2026/01/computer-vision-in-Fitness.webp 300w,
+                    /blog/content/images/size/w600/2026/01/computer-vision-in-Fitness.webp 600w,
+                    /blog/content/images/size/w1000/2026/01/computer-vision-in-Fitness.webp 1000w,
+                    /blog/content/images/size/w2000/2026/01/computer-vision-in-Fitness.webp 2000w"
+            sizes="(max-width: 1000px) 400px, 800px"
+            src="/blog/content/images/size/w600/2026/01/computer-vision-in-Fitness.webp"
+            alt="Building an AI Pull-Up Counter with YOLO11 Pose Estimation"
+            loading="lazy"
+        />
+
+
+    </a>
+
+    <div class="post-card-content">
+
+        <a class="post-card-content-link" href="/blog/ai-pull-up-counter-yolo11-pose/">
+            <header class="post-card-header">
+                <div class="post-card-tags">
+                </div>
+                <h2 class="post-card-title">
+                    Building an AI Pull-Up Counter with YOLO11 Pose Estimation
+                </h2>
+            </header>
+                <div class="post-card-excerpt">Manual rep counting is flawed. This guide explores building a cheat-proof AI Pull-Up Counter using Python and YOLO11 Pose Estimation. Learn to track skeletal joints in real-time, enforce strict form with &quot;Angle Logic,&quot; and build an automated digital spotter that guarantees every rep counts.</div>
+        </a>
+
+        <footer class="post-card-meta">
+            <time class="post-card-meta-date" datetime="2026-01-30">Jan 30, 2026</time>
+                <span class="post-card-meta-length">7 min read</span>
+                <script
+    data-ghost-comment-count="697b31c105bc8302d3f60265"
+    data-ghost-comment-count-empty=""
+    data-ghost-comment-count-singular="comment"
+    data-ghost-comment-count-plural="comments"
+    data-ghost-comment-count-tag="span"
+    data-ghost-comment-count-class-name=""
+    data-ghost-comment-count-autowrap="true"
+>
+</script>
+        </footer>
+
+    </div>
+
+</article>
+                </div>
+            </aside>
+
+
+
+    </div>
+
+
+
+
+
+
+
+  <footer class="site-footer lb-section footerconterner">
+          
+        <div class="div-block-601">
+            <div class="g2-badges-container-footer">
+                <img width="417" height="1000" alt="Labellerr Award" src="https://cdn.prod.website-files.com/62f35fc537dc73303f60c5dc/67e104ef73bc5233065922af_badg-1-p-500.png" loading="lazy" class="g2-badgefooter" alt="Labellerr G2 High Performer Award badge">
+                <img width="417" height="1000" alt="Labellerr Award" src="https://cdn.prod.website-files.com/62f35fc537dc73303f60c5dc/67e104ef14062170f3c76a46_badg2-p-500.png" loading="lazy" class="g2-badgefooter" alt="Labellerr G2 High Performer Award badge">
+                <img width="417" height="1000" alt="Labellerr Award" src="https://cdn.prod.website-files.com/62f35fc537dc73303f60c5dc/67e104f0b361a8c7a7f7109d_badg3-p-500.png" loading="lazy" class="g2-badgefooter" alt="Labellerr G2 Leader Award badge">
+                <img width="417" height="1000" alt="Labellerr Award" src="https://cdn.prod.website-files.com/62f35fc537dc73303f60c5dc/67e104ec4234f7f36b9bc26c_badg6-p-500.png" loading="lazy" class="g2-badgefooter" alt="Labellerr G2 Best Support Award badge">
+                <img width="417" height="1000" alt="Labellerr Award" src="https://cdn.prod.website-files.com/62f35fc537dc73303f60c5dc/67e104ef4234f7f36b9bc684_badg4-p-500.png" loading="lazy" class="g2-badgefooter" alt="Labellerr G2 Easiest To Use Award badge">
+                <img width="417" height="1000" alt="Labellerr Award" src="https://cdn.prod.website-files.com/62f35fc537dc73303f60c5dc/67e104efbcdbf3648b39261b_badg5-p-500.png" loading="lazy" class="g2-badgefooter" alt="Labellerr G2 Fastest Implementation Award badge">
+                <img width="417" height="1000" alt="Labellerr Award" src="https://cdn.prod.website-files.com/62f35fc537dc73303f60c5dc/67e104f1e5ccffa5ad4dad3f_badg7-p-500.png" loading="lazy" class="g2-badgefooter" alt="Labellerr G2 Momentum Leader Award badge">
+                
+                </div></div>
+
+<div class="line-border"></div>
+
+   <div class="div-block-48">
+   <div class="div-block-312">
+   <div class="div-block-36">
+       <h4 class="footer-heading">Platform</h4>
+       <a href="https://www.labellerr.com/data-collection" class="footer-link">Collect</a>
+       <a href="https://www.labellerr.com/data-curation" class="footer-link">Curate</a>
+       <a href="https://www.labellerr.com/data-annotate" class="footer-link">Data Annotation Platform</a>
+       <a href="https://www.labellerr.com/questionnaire" class="footer-link">Datasets</a>
+       <a href="https://www.labellerr.com/pricing" class="footer-link">Pricing</a>
+       <a href="https://www.labellerr.com/pre-labelling" class="footer-link">Pre Label Datasets</a>
+       <a href="https://www.labellerr.com/technology" class="footer-link">Smart Feedback Loop</a>
+       <a href="https://www.labellerr.com/interactive-demo" class="footer-link">Interactive Demo</a>
+       <a href="https://www.labellerr.com/product-demo" class="footer-link">Product Demo</a>
+       <a href="https://www.labellerr.com/image-annotation-platform" class="footer-link">Image Annotation Platform</a>
+       <a href="https://www.labellerr.com/text-annotation-platform" class="footer-link">Text Annotation Platform</a>
+       <a href="https://www.labellerr.com/video-annotation-platform" class="footer-link">Video Annotation Platform</a>
+       <a href="https://www.labellerr.com/annotation-services" class="footer-link">Annotation Services</a>
+                 <div style="margin-top: 30px; display: flex; gap: 15px; align-items: center;">
+        <img src="https://cdn.prod.website-files.com/62f35fc537dc73303f60c5dc/68393cb76676896290e3a9db_SOC2.webp" alt="SOC 2 Compliance" style="height: 80px;">
+        <img src="https://cdn.prod.website-files.com/62f35fc537dc73303f60c5dc/68395a05f1762453244a7e4b_gdpr-removebg-preview-p-500.webp" alt="GDPR Compliance" style="height: 80px;">
+      </div>
+    </div>
+   <div class="div-block-36">
+       <h4 class="footer-heading">Solutions</h4>
+       <a href="https://www.labellerr.com/llm" class="footer-link">LLM </a>
+       <a href="https://www.labellerr.com/automotive" class="footer-link">Automotive</a>
+       <a href="https://www.labellerr.com/healthcare-solution" class="footer-link">Healthcare</a>
+       <a href="https://www.labellerr.com/security-surveillance" class="footer-link">Security &amp; Surveillance</a>
+       <a href="https://www.labellerr.com/agriculture-solution" class="footer-link">Agritech</a>
+       <a href="https://www.labellerr.com/retail" class="footer-link">Retail</a>
+       <a href="https://www.labellerr.com/biotechnology-and-life-sciences" class="footer-link">Biotechnology</a>
+       <a href="https://www.labellerr.com/energy" class="footer-link">Energy</a>
+       <a href="https://www.labellerr.com/sports-vision" class="footer-link">Sports Vision</a>
+       <a href="https://www.labellerr.com/manufacturing" class="footer-link">Manufacturing</a>
+   </div>
+   <div class="div-block-36">
+       <h4 class="footer-heading">Company</h4>
+       <a href="https://www.labellerr.com/about-us" class="footer-link">About Us</a>
+       <a href="https://www.labellerr.com/careers" class="footer-link">Careers</a>
+       <a href="https://www.labellerr.com/privacy" class="footer-link">Privacy</a>
+       <a href="https://www.labellerr.com/contact-us" class="footer-link">Contact Us</a>
+       <a href="https://www.labellerr.com/terms-of-service" class="footer-link">Terms &amp; Conditions</a>
+     
+   </div>
+   <div class="div-block-36">
+       <h4 class="footer-heading">Learn</h4>
+       <a href="https://www.labellerr.com/blog" class="footer-link">Blog</a>
+       <a href="https://www.labellerr.com/case-studies" class="footer-link">Case Studies</a>
+       <a href="https://www.labellerr.com/expert-discussions" class="footer-link">Expert discussions</a>
+       <a href="https://www.labellerr.com/faq" class="footer-link">FAQ</a>
+       <a href="https://docs.labellerr.com" target="_blank" class="footer-link">Documentation</a>
+   </div>
+   <div class="div-block-36">
+       <h4 class="footer-heading">Compare</h4>
+       <a href="https://www.labellerr.com/blog/labellerr-vs-roboflow/" class="footer-link">Labellerr vs Roboflow</a>
+       <a href="https://www.labellerr.com/blog/labellerr-vs-encord/" class="footer-link">Labellerr vs Encord</a>
+       <a href="https://www.labellerr.com/blog/labellerr-vs-dataloop/" class="footer-link">Labellerr vs Dataloop</a>
+       <a href="https://www.labellerr.com/blog/labellerr-vs-supervisely/" class="footer-link">Labellerr vs Supervisely</a>
+       <a href="https://www.labellerr.com/labellerr-vs-aws-sagemaker" class="footer-link">Labellerr vs AWS Sagemaker</a>
+       <a href="https://www.labellerr.com/labellerr-vs-cvat" class="footer-link">Labellerr vs CVAT</a>
+       <a href="https://www.labellerr.com/labellerr-vs-appen" class="footer-link">Labellerr vs Appen</a>
+       <a href="https://www.labellerr.com/labellerr-vs-labelbox" class="footer-link">Labellerr vs Labelbox</a>
+       <a href="https://www.labellerr.com/labellerr-vs-v7-labs" class="footer-link">Labellerr vs V7 Labs</a>
+       <a href="https://www.labellerr.com/labellerr-vs-superannotate" class="footer-link">Labellerr vs SuperAnnotate</a>
+       
+   </div>
+   <div class="div-block-36">
+       <h4 class="footer-heading">Contact</h4>
+       <h5 style="font-weight: bold;  font-size: 16px; margin: 0px;">US Office</h5>
+       <p class="paragraph-37">Tensor Matics Inc<br>44, Tehama St, <br>San Francisco, CA<br>USA 94107<br>Phone:<a target="_blank" href="tel:+16283133187" class="link-10">+16283133187</a><br><br><strong>Registered Office<br>‍</strong>651 N Broad St, Suite 201, Middletown, New Castle 19709 Delaware</p>
+       <h5 style="font-weight: bold;  font-size: 16px; margin: 0px;">India Office:</h5>
+       <p class="paragraph-38 paragraph-52">Tensor Matics Pvt Ltd<br>2nd Floor, Kissan Vikas Chamber, Opposite World Trade Centre, Gmada Aerocity, Chandigarh, Punjab 140306, India<br>Phone: <a href="tel:+917565883102" class="link-10">+917565883102</a></p>
+
+        <div style="margin-bottom: 20px; margin-top: 20px;"> 
+
+
+            <a aria-label="whatsapp" href="https://wa.me/917565883102" target="_blank" ><img src="https://cdn.prod.website-files.com/62f35fc537dc73303f60c5dc/654a284fdbf7769d2c302fec_whatsup-2.webp" loading="lazy" alt="WhatsApp button for easy contact. Let me know if you need any further assistance with it." aria-label="whatsapp" style="width: 90%;  height: auto;"></a>
+
+
+        </div>
+
+
+
+
+
+<div class="footer-text"><a href="mailto:support@tensormatics.com" class="link-10">support@tensormatics.com</a></div>
+       <div class="div-block-379">
+  <a aria-label="facebook" href="https://www.facebook.com/tensormaticslabellerr/" target="_blank" class="w-inline-block">
+    <img src="https://cdn.prod.website-files.com/62f35fc537dc73303f60c5dc/64b9235bcb28e20392d394fc_5296499_fb_facebook_facebook%20logo_icon.webp" width="40" height="40" alt="facebook" class="image-93">
+  </a>
+  <a aria-label="linkedin" href="https://www.linkedin.com/company/labellerr" target="_blank" class="w-inline-block">
+    <img src="https://cdn.prod.website-files.com/62f35fc537dc73303f60c5dc/64b9235b18e86e08f5f25285_5296501_linkedin_network_linkedin%20logo_icon.webp" width="40" height="40" alt="linkedin" class="image-93">
+  </a>
+  <a aria-label="twitter" href="https://x.com/Labellerr1" target="_blank" class="w-inline-block">
+    <img src="https://cdn.prod.website-files.com/62f35fc537dc73303f60c5dc/64b9235af8ad718e4d38f23e_5296514_bird_tweet_twitter_twitter%20logo_icon.webp" width="40" height="40" alt="twitter" class="image-93">
+  </a>
+  <a aria-label="youtube" href="https://www.youtube.com/@labellerr" target="_blank" class="w-inline-block">
+    <img src="https://cdn.prod.website-files.com/62f35fc537dc73303f60c5dc/64b9235a5bc125b7caf704b9_5296521_play_video_vlog_youtube_youtube%20logo_icon.webp" width="40" height="40" alt="youtube" class="image-93">
+  </a>
+  <a aria-label="github" href="https://github.com/Labellerr" target="_blank" class="w-inline-block">
+    <img src="https://storage.googleapis.com/labellerr-cdn/1%20%20highdream-e1/github-mark-white.png" width="40" height="40" alt="github" class="image-93">
+  </a>
+</div>
+   
+   
+   </div>
+   
+   
+   </div>
+   <div class="div-block-435"><div class="div-block-434"><a href="https://www.capterra.com/p/201456/Labellerr/reviews/" target="_blank" class="link-block w-inline-block"><img src="https://cdn.prod.website-files.com/62f35fc537dc73303f60c5dc/64ec771ba700debd2875efd5_17312158a7c8ddcfd27cb62e06ab8715.svg" loading="lazy" width="300" height="98" alt="capterra" class="image-105"></a><a href="https://www.g2.com/products/labellerr/reviews" target="_blank" class="w-inline-block"><img src="https://cdn.prod.website-files.com/62f35fc537dc73303f60c5dc/64e5ca35808d5d4f81af06b3_g2crowd.webp" loading="lazy" width="144" height="49" alt="G2" class="image-105"></a></div></div>
+
+
+
+
+   <div class="div-block-426"><div class="text-block-75">Copyright © 2025 Tensor Matics, Inc. All right reserved.<br>Making AI journey simple!<br></div></div>
+           
+       </footer>
+
+</div>
+
+
+<script
+    src="https://code.jquery.com/jquery-3.5.1.min.js"
+    integrity="sha256-9/aliU8dGd2tb6OSsuzixeV4y/faTqgFtohetphbbj0="
+    crossorigin="anonymous">
+</script>
+<script src="/blog/assets/built/casper.js?v=28e3ee995b"></script>
+<script>
+$(document).ready(function () {
+
+document.querySelector(".popupbg").style.display = "none";
+
+window.addEventListener("load", function(){
+    setTimeout(
+        function open(event){
+            document.querySelector(".popup").style.display = "block";
+            document.querySelector(".popupbg").style.display = "block";
+        },
+        5000
+    )
+});
+
+
+document.querySelector("#close").addEventListener("click", function(){
+    document.querySelector(".popupbg").style.display = "none";
+});
+
+
+
+
+
+
+
+
+
+
+
+    // Mobile Menu Trigger
+    $('.gh-burger').click(function () {
+        $('body').toggleClass('gh-head-open');
+    });
+    // FitVids - Makes video embeds responsive
+    $(".gh-content").fitVids();
+});
+</script>
+
+<script type="text/javascript">
+    var links = document.querySelectorAll('a');
+    links.forEach((link) => {
+        var a = new RegExp('/' + window.location.host + '/');
+        if(!a.test(link.href)) {
+            link.addEventListener('click', (event) => {
+                event.preventDefault();
+                event.stopPropagation();
+                window.open(link.href, '_blank');
+            });
+        }
+    });
+</script>
+
+ <script type="text/javascript" id="zsiqchat">var $zoho=$zoho || {};$zoho.salesiq = $zoho.salesiq || {widgetcode: "siq5c8189ddc8e7b50eebf46bad871ee0c24ad83955cd1cfedb3f3b94c72db2cf21", values:{},ready:function(){}};var d=document;s=d.createElement("script");s.type="text/javascript";s.id="zsiqscript";s.defer=true;s.src="https://salesiq.zohopublic.in/widget";t=d.getElementsByTagName("script")[0];t.parentNode.insertBefore(s,t);</script> 
+
+<!-- Start of HubSpot Embed Code -->
+  <script type="text/javascript" id="hs-script-loader" async defer src="//js-na1.hs-scripts.com/24321288.js"></script>
+<!-- End of HubSpot Embed Code -->
+
+</body>
+</html>
